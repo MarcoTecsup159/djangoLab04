@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de Entradas</title>
+    <style>
+        body {
+            font-family: Bookman Old Style;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #07081c;
+            font-size: 36px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 8;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        li {
+            background-color: #fff;
+            margin: 1px 0;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin: 0 0 10px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        p:last-of-type {
+            font-size: 14px;
+            color: #777;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Lista Entradas</h1>
+    <ul>
+        {% for entrada in entradas %}
+            <li>
+                <h2>{{ entrada.titulo }}</h2>
+                <p>{{ entrada.contenido }}</p>
+                <p>Autor: <a href="{% url 'autor_entradas' entrada.autor.id %}">{{ entrada.autor.nombre }}</a></p>
+                <p>Fecha de Publicación: {{ entrada.fecha_publicacion }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
